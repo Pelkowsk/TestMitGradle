@@ -1,0 +1,53 @@
+name: CICDTest
+
+on:
+    push:
+        branches:
+          - master
+    pull_request:
+      branches:
+        - master
+    workflow_dispatch:
+ 
+
+
+jobs:
+  build-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+            distribution: 'corretto'
+           # cache: gradle #verhindert unnötige Schritte (Wrapper-download) durch cache Speichern?
+            java-version: 17
+
+        
+      - name: Build Application (Gradle)
+        run: ./gradlew build --no-daemon
+
+      - name: Test Application (Gradle)
+        run: ./gradlew test --no-daemon
+
+      #- name: Special Application Test
+       # run: |
+        #    for test in $(cat testlist.txt); do
+         #   ./gradlew test --tests "$test" --no-daemon || exit 1
+          #   done
+# Für den Aufruf der Tests in Datei testliste.txt
+
+     # - name: Set Timestamp
+      #  id: timestamp
+      #  run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
+      # Für den Timestamp (Vorbereitung)
+
+      - name: Upload Test Results
+        if: always() # Führt dies auch bei fehlgeschlagenen Tests aus
+        uses: actions/upload-artifact@v3
+        with:
+                name: test-results${{ github.run_id }} #oder mit timestamp ${{ env.TIMESTAMP }}
+                path: build/reports/tests/test # Gradle legt Standardberichte hier ab
