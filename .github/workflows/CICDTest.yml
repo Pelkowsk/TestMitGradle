@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
           # cache: gradle # Prevent unnecessary steps (Wrapper download) through caching
@@ -44,7 +44,7 @@ jobs:
 
       - name: Upload Test Results
         if: always() # Execute even if tests fail
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ github.run_id }} # Or use timestamp ${{ env.TIMESTAMP }}
           path: build/reports/tests/test # Gradle saves default reports here
@@ -72,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run License Scanner
         run: |
@@ -81,7 +81,7 @@ jobs:
           ./licensee-linux detect . --json > license-report.json
 
       - name: Upload License Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: license-compliance-report
           path: license-report.json
