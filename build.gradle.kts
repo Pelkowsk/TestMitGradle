@@ -17,3 +17,10 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+tasks.jar {
+    manifest {
+        attributes(
+            "Main-Class" to "java/org/example/Main.java" // Ersetze mit deinem Hauptklassenpfad
+        )
+    }
+}
