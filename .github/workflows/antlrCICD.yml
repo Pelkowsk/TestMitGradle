@@ -15,11 +15,11 @@ jobs:
     steps:
       # Step 1: Checkout the code
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up Java
       - name: Set up JDK
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
@@ -32,7 +32,7 @@ jobs:
       # Step 4: Generate Lexer and Parser
       - name: Generate Lexer and Parser
         run: |
-          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/main/antlr/YourGrammar.g4
+          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/test.g4
         working-directory: .
 
       # Step 5: Build the project with Gradle
