@@ -60,12 +60,12 @@ jobs:
 
       - name: Push Docker Image
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/<IMAGE_NAME>:<TAG> ${{ secrets.DOCKER_USERNAME }}/<IMAGE_NAME>:<TAG>
-          docker push ${{ secrets.DOCKER_USERNAME }}/<IMAGE_NAME>:<TAG>
+          docker tag ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG> ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG>
+          docker push ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG>
 
       - name: Verify Docker Image
         run: |
-          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/<IMAGE_NAME>"
+          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/<Dockerfile>"
 
   license-check:
     name: License Check
