@@ -38,7 +38,7 @@ jobs:
 
       - name: Set Timestamp
         id: timestamp
-        run: echo "TIMESTAMP=$(date +'%h-%d-%m_%Y:%M:%S')" >> $GITHUB_ENV
+        run: echo "TIMESTAMP=$(date +'%h-%d-%m_%Y-%M-%S')" >> $GITHUB_ENV
 
       - name: Upload Test Results
         if: always()
