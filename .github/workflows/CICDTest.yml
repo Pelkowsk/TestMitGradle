@@ -37,10 +37,10 @@ jobs:
       #     done
       # For running tests listed in the file testlist.txt
 
-      # - name: Set Timestamp
-      #   id: timestamp
-      #   run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
-      # For adding a timestamp (Preparation)
+      - name: Set Timestamp
+        id: timestamp
+        run: echo "TIMESTAMP=$(date +'%Y%m%d_%H%M%S')" >> $GITHUB_ENV
+          # For adding a timestamp (Preparation)
 
       - name: Upload Test Results
         if: always() # Execute even if tests fail
@@ -56,16 +56,16 @@ jobs:
         run: echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG> .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/Dockerfile:${{ env.TAG }} .
 
       - name: Push Docker Image
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG> ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG>
-          docker push ${{ secrets.DOCKER_USERNAME }}/<Dockerfile>:<TAG>
+          docker tag ${{ secrets.DOCKER_USERNAME }}/Dockerfile:${{ env.TAG }} ${{ secrets.DOCKER_USERNAME }}/Dockerfile:${{ env.TAG }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/Dockerfile:${{ env.TAG }}
 
       - name: Verify Docker Image
         run: |
-          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/<Dockerfile>"
+          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/Dockerfile:${{ env.TAG }}"
 
   license-check:
     name: License Check
