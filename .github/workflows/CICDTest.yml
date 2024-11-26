@@ -78,7 +78,7 @@ jobs:
           args: --output ./fossa-report.html
 
       - name: Save FOSSA Report Locally
-        run: fossa analyze --output fossa-report.json
+        run: fossa analyze --output ./fossa-report.json
       - name: Upload FOSSA Report
         uses: actions/upload-artifact@v4
         with:
