@@ -54,16 +54,16 @@ jobs:
         run: echo "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/meineanwendung:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/sysmlv2parser:latest .
 
       - name: Push Docker Image
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/meineanwendung:latest ${{ secrets.DOCKER_USERNAME }}/meineanwendung:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/meineanwendung:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/sysmlv2parser:latest ${{ secrets.DOCKER_USERNAME }}/sysmlv2parser:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/sysmlv2parser:latest
 
       - name: Verify Docker Image
         run: |
-          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/meineanwendung:latest"
+          echo "Image pushed to DockerHub: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/sysmlv2parser:latest"
 
   license-check:
     name: License Check
