@@ -74,14 +74,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run License Scanner
-        run: |
-          curl -LO https://github.com/licensee/licensee/releases/download/v9.16.0/licensee-linux
-          chmod +x licensee-linux
-          ./licensee-linux detect . --json > license-report.json
-
-      - name: Upload License Report
-        uses: actions/upload-artifact@v4
+      - name: Run License Compliance Checker
+        uses: soheilbr82/automated-license-check@v1
         with:
-          name: license-compliance-report
-          path: license-report.json
+            allowed_licenses: "MIT, Apache-2.0, BSD-3-Clause"
+
+     # - name: Upload License Report
+      #  uses: actions/upload-artifact@v4
+       # with:
+        #  name: license-compliance-report
+         # path: license-report.json
