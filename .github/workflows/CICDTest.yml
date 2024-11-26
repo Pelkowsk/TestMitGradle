@@ -77,7 +77,7 @@ jobs:
       - name: Run License Compliance Checker
         uses: soheilbr82/automated-license-check@v1
         with:
-            allowed_licenses: "MIT, Apache-2.0"
+            allowed_licenses: "GPLv3"
 
      # - name: Upload License Report
       #  uses: actions/upload-artifact@v4
