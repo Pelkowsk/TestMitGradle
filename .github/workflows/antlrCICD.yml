@@ -1,0 +1,44 @@
+name: Build and Test with ANTLR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Step 3: Install ANTLR
+      - name: Download ANTLR
+        run: |
+          curl -o antlr-4.13.0-complete.jar https://www.antlr.org/download/antlr-4.13.0-complete.jar
+
+      # Step 4: Generate Lexer and Parser
+      - name: Generate Lexer and Parser
+        run: |
+          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/main/antlr/YourGrammar.g4
+        working-directory: .
+
+      # Step 5: Build the project with Gradle
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      # Step 6: Run tests
+      - name: Run Tests
+        run: ./gradlew test
