@@ -23,6 +23,15 @@ jobs:
           distribution: 'corretto'
           java-version: 17
 
+      - name: Download ANTLR
+        run: |
+          curl -o antlr-4.13.0-complete.jar https://www.antlr.org/download/antlr-4.13.0-complete.jar
+
+      - name: Generate Lexer and Parser
+        run: |
+          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/test.g4
+        working-directory: .
+
       - name: Build Application (Gradle)
         run: ./gradlew build --no-daemon
 
