@@ -78,6 +78,6 @@ jobs:
 
       # - name: Upload License Report
       #   uses: actions/upload-artifact@v4
-      #   with:
+      ##   with:
       #     name: license-compliance-report
       #     path: license-report.json
