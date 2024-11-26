@@ -75,6 +75,13 @@ jobs:
         uses: fossas/fossa-action@main
         with:
           api-key: ${{ secrets.fossaApiKey }}
+          args: --output ./fossa-report.html
+
+      - name: Upload FOSSA Report (HTML)
+        uses: actions/upload-artifact@v4
+        with:
+          name: fossa-report-html
+          path: ./fossa-report.html
 
       # - name: Upload License Report
       #   uses: actions/upload-artifact@v4
