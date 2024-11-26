@@ -75,7 +75,7 @@ jobs:
         uses: fossas/fossa-action@main
         with:
           api-key: ${{ secrets.fossaApiKey }}
-          args: --output ./fossa-report.html
+        #  args: --output ./fossa-report.html
 
       - name: Save FOSSA Report Locally
         run: fossa analyze --output ./fossa-report.json
