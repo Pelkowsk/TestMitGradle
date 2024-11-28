@@ -7,18 +7,18 @@ SCAN_RESULTS_FILE = 'scancode-results.json'
 LICENSE_POLICY_FILE = 'license_policy.json'
 OUTPUT_FILE = 'compliance_check_result.txt'
 
-# Definieren der Ignore-Muster als reguläre Ausdrücke
 IGNORE_PATTERNS = [
-    re.compile(r'^TestMitGradle/build/.*'),
-    re.compile(r'^TestMitGradle/gradle/wrapper/.*'),
-    re.compile(r'^TestMitGradle/.idea/.*'),
-    re.compile(r'^TestMitGradle/.iml$'),
-    re.compile(r'^TestMitGradle/.gitignore$'),
-    re.compile(r'^TestMitGradle/LICENSE$'),
-    re.compile(r'^TestMitGradle/Dockerfile$'),
-    re.compile(r'^TestMitGradle/.github/.*'),
-    re.compile(r'^TestMitGradle/'),
+    re.compile(r'^TestMitGradle/build/.*'),           # Ignoriert 'TestMitGradle/build/' und dessen Inhalt
+    re.compile(r'^TestMitGradle/gradle/wrapper/.*'),  # Ignoriert 'TestMitGradle/gradle/wrapper/' und dessen Inhalt
+    re.compile(r'^TestMitGradle/\.idea/.*'),          # Ignoriert 'TestMitGradle/.idea/' und dessen Inhalt
+    re.compile(r'^TestMitGradle/[^/]+\.iml$'),        # Ignoriert '.iml'-Dateien direkt in 'TestMitGradle/'
+    re.compile(r'^TestMitGradle/\.gitignore$'),       # Ignoriert '.gitignore' direkt in 'TestMitGradle/'
+    re.compile(r'^TestMitGradle/LICENSE$'),           # Ignoriert 'LICENSE' direkt in 'TestMitGradle/'
+    re.compile(r'^TestMitGradle/Dockerfile$'),        # Ignoriert 'Dockerfile' direkt in 'TestMitGradle/'
+    re.compile(r'^TestMitGradle/\.github/.*'),        # Ignoriert 'TestMitGradle/.github/' und dessen Inhalt
+    # Weitere spezifische Muster können hier hinzugefügt werden
 ]
+
 
 def load_json(file_path):
     """Lädt eine JSON-Datei und gibt deren Inhalt zurück."""
