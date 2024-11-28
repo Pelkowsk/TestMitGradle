@@ -1,0 +1,16 @@
+{
+  "allowed_licenses": [
+    "GNU General Public License v3.0",
+    "GNU Lesser General Public License v3.0",
+    "MIT License",
+    "BSD License",
+    "Apache License 2.0"
+  ],
+  "forbidden_licenses": [
+    "GNU General Public License v2.0",
+    "Mozilla Public License 1.1",
+    "Common Development and Distribution License 1.0",
+    "Eclipse Public License 1.0",
+    "Artistic License 1.0"
+  ]
+}

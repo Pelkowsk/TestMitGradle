@@ -1,0 +1,39 @@
+name: Protect check_license_compliance.py
+
+on:
+  push:
+    paths:
+      - 'check_license_compliance.py'
+  pull_request:
+    paths:
+      - 'check_license_compliance.py'
+
+jobs:
+  check-file-change:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check if check_license_compliance.py was modified
+        id: file_check
+        run: |
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -q 'check_license_compliance.py'; then
+            echo "check_license_compliance.py was modified."
+            echo "::set-output name=modified::true"
+            echo "Die Datei 'check_license_compliance.py' wurde geändert. Bitte setzen Sie die Datei auf ihren ursprünglichen Zustand zurück oder warten Sie auf die Genehmigung durch einen Administrator."
+          else
+            echo "check_license_compliance.py wurde nicht geändert."
+            echo "::set-output name=modified::false"
+          fi
+
+  manual-approval:
+    needs: check-file-change
+    if: needs.check-file-change.outputs.modified == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Awaiting manual approval
+        run: echo "Manuelle Genehmigung erforderlich. Bitte warten Sie auf die Bestätigung durch einen Administrator."
+        environment:
+          name: 'production'
+          reviewers: ['admin']

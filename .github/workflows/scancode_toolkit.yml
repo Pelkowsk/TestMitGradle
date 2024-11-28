@@ -1,0 +1,42 @@
+name: License Compliance Check
+
+on: [push, pull_request]
+
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Checkout Compliance Script
+        uses: actions/checkout@v4
+        with:
+          repository: your-org/compliance-scripts
+          path: compliance-scripts
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install ScanCode
+        run: pip install scancode-toolkit
+
+      - name: Run ScanCode
+        run: scancode --license --json-pp scancode-results.json .
+
+      - name: Check License Compliance
+        run: python compliance-scripts/check_license_compliance.py
+
+      - name: Upload ScanCode Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: scancode-report
+          path: scancode-results.json
+
+      - name: Upload Compliance Check Result
+        uses: actions/upload-artifact@v3
+        with:
+          name: compliance-check-result
+          path: compliance_check_result.txt
