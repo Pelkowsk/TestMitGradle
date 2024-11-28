@@ -35,6 +35,18 @@ jobs:
       - name: Find relevant paths
         run: python find_relevant_files.py
 
+      - name: Check if ignore_paths.txt exists
+        run: |
+          if [ -f ignore_paths.txt ]; then
+            echo "ignore_paths.txt wurde erfolgreich erstellt."
+          else
+            echo "Fehler: ignore_paths.txt wurde nicht erstellt."
+            exit 1
+          fi
+
+      - name: Display contents of ignore_paths.txt
+        run: cat ignore_paths.txt
+
       - name: Run ScanCode
         run: |
           ignore_args=$(awk '{print "--ignore \"" $0 "\""}' ignore_paths.txt | tr '\n' ' ')
