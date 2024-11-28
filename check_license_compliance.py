@@ -43,12 +43,12 @@ def main():
                     forbidden_license_files.append((file_path, license_key))
 
     # Ergebnisse ausgeben und in Datei schreiben
-    with open(OUTPUT_FILE, 'w') as output:
-        if no_license_files:
-            output.write("Die folgenden Dateien enthalten keinen Lizenzeintrag:\n")
-            for path in no_license_files:
-                output.write(f" - {path}\n")
-            output.write("\n")
+    #with open(OUTPUT_FILE, 'w') as output:
+     #   if no_license_files:
+      #      output.write("Die folgenden Dateien enthalten keinen Lizenzeintrag:\n")
+       #     for path in no_license_files:
+        #        output.write(f" - {path}\n")
+         #   output.write("\n")
 
         if forbidden_license_files:
             output.write("Die folgenden Dateien enthalten verbotene Lizenzen:\n")
