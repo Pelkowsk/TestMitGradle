@@ -25,16 +25,7 @@ jobs:
 
       - name: Run ScanCode
         run: |
-          scancode --license \
-                   --ignore 'build/*' \
-                   --ignore 'gradle/wrapper/*' \
-                   --ignore '.idea/*' \
-                   --ignore '*.iml' \
-                   --ignore '.gitignore' \
-                   --ignore 'LICENSE' \
-                   --ignore 'Dockerfile' \
-                   --ignore '.github/*' \
-                   --json-pp scancode-results.json .
+          scancode --license  --json-pp scancode-results.json .
 
       - name: Check License Compliance
         run: python check_license_compliance.py
