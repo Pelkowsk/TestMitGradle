@@ -34,6 +34,7 @@ jobs:
 
       - name: Find relevant paths
         run: python find_relevant_files.py
+        working-directory: ${{ github.workspace }}
 
       - name: Check if ignore_paths.txt exists
         run: |
