@@ -25,7 +25,7 @@ jobs:
 
       - name: Run ScanCode
         run: |
-          scancode --license  --json-pp scancode-results.json .
+          scancode --license --ignore "TestMitGradle/build" --json-pp scancode-results.json .
 
       - name: Check License Compliance
         run: python check_license_compliance.py
