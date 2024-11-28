@@ -9,15 +9,15 @@ OUTPUT_FILE = 'compliance_check_result.txt'
 
 # Definieren der Ignore-Muster als reguläre Ausdrücke
 IGNORE_PATTERNS = [
-    re.compile(r'^build/.*'),
-    re.compile(r'^gradle/wrapper/.*'),
-    re.compile(r'^\.idea/.*'),
-    re.compile(r'^.*\.iml$'),
-    re.compile(r'^\.gitignore$'),
-    re.compile(r'^LICENSE$'),
-    re.compile(r'^Dockerfile$'),
-    re.compile(r'^\.github/.*'),
-    re.compile(r'^TestMitGradle/.*'),
+    re.compile(r'^TestMitGradle/build/.*'),
+    re.compile(r'^TestMitGradle/gradle/wrapper/.*'),
+    re.compile(r'^TestMitGradle/.idea/.*'),
+    re.compile(r'^TestMitGradle/.iml$'),
+    re.compile(r'^TestMitGradle/.gitignore$'),
+    re.compile(r'^TestMitGradle/LICENSE$'),
+    re.compile(r'^TestMitGradle/Dockerfile$'),
+    re.compile(r'^TestMitGradle/.github/.*'),
+    re.compile(r'^TestMitGradle'),
 ]
 
 def load_json(file_path):
