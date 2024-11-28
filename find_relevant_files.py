@@ -1,6 +1,7 @@
 import os
 import re
 
+
 # Definieren der Ignore-Muster
 IGNORE_PATTERNS = [
     re.compile(r'^build/.*'),
