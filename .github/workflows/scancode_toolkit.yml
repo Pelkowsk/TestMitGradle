@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Compliance Script
         uses: actions/checkout@v4
         with:
-          repository: your-org/compliance-scripts
+          repository: Pelkowsk/TestMitGradle
           path: compliance-scripts
 
       - name: Set up Python
