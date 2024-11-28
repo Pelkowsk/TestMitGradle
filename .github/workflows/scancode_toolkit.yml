@@ -25,7 +25,21 @@ jobs:
 
       - name: Run ScanCode
         run: |
-          scancode --license --ignore "TestMitGradle/build" --json-pp scancode-results.json .
+          scancode --license \
+            --ignore "TestMitGradle/build/*" \
+            --ignore "TestMitGradle/gradle/wrapper/*" \
+            --ignore "TestMitGradle/.idea/*" \
+            --ignore "TestMitGradle/*.iml" \
+            --ignore "TestMitGradle/.gitignore" \
+            --ignore "TestMitGradle/LICENSE" \
+            --ignore "TestMitGradle/Dockerfile" \
+            --ignore "TestMitGradle/.github/*" \
+            --ignore "TestMitGradle/compliance-scripts/*" \
+            --ignore "TestMitGradle/gen/*" \
+            --ignore "TestMitGradle/gradle/*" \
+            --ignore "TestMitGradle/src/test/*" \
+            --json-pp scancode-results.json .
+
 
       - name: Check License Compliance
         run: python check_license_compliance.py
