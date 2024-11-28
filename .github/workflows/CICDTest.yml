@@ -38,13 +38,6 @@ jobs:
       - name: Test Application (Gradle)
         run: ./gradlew test --no-daemon
 
-      # - name: Special Application Test
-      #   run: |
-      #     for test in $(cat testlist.txt); do
-      #       ./gradlew test --tests "$test" --no-daemon || exit 1
-      #     done
-      # For running tests listed in the file testlist.txt
-
       - name: Set Timestamp
         id: timestamp
         run: echo "TIMESTAMP=$(date +'%h-%d-%m_%Y-%M-%S')" >> $GITHUB_ENV
@@ -77,34 +70,37 @@ jobs:
   license-check:
     name: License Check
     runs-on: ubuntu-latest
+    needs: build-test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Run FOSSA Scan
         uses: fossas/fossa-action@main
         with:
           api-key: ${{ secrets.fossaApiKey }}
-        #  args: --output ./fossa-report.html
 
-     # - name: Save FOSSA Report Locally
-      #  run: fossa analyze --output ./fossa-report.json
-      #- name: Upload FOSSA Report
-       # uses: actions/upload-artifact@v4
-        #with:
-         # name: fossa-report
-          #path: fossa-report.json
+      - name: Save FOSSA Report Locally
+        run: fossa analyze --output ./fossa-report.json
 
-     # - name: Convert JSON Report to HTML
-      #  run: |
-       #   cat fossa-report.json | jq . > fossa-report.html
-      #- name: Upload HTML Report
-       # uses: actions/upload-artifact@v4
-       # with:
-        #  name: fossa-report-html
-         # path: fossa-report.html
+      - name: Upload FOSSA Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fossa-report
+          path: fossa-report.json
 
-      # - name: Upload License Report
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: license-compliance-report
-      ##     path: license-report.json
+      - name: Convert JSON Report to HTML
+        run: |
+          cat fossa-report.json | jq . > fossa-report.html
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fossa-report-html
+          path: fossa-report.html
+
+      - name: Upload License Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-compliance-report
+          path: license-report.json
