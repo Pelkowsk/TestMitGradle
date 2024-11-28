@@ -15,6 +15,7 @@ ignore_patterns = [
     'TestMitGradle/gen/*',
     'TestMitGradle/gradle/*',
     'TestMitGradle/src/test/*',
+    'TestMitGradle'
 ]
 
 def is_ignored(path, ignore_patterns):

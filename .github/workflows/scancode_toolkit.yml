@@ -20,12 +20,12 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install ScanCode
+        run: pip install scancode-toolkit
+
       - name: Find relevant paths
         run: |
           python find_relevant_files.py
-
-      - name: Install ScanCode
-        run: pip install scancode-toolkit
 
       - name: Run ScanCode
         run: |
