@@ -1,0 +1,27 @@
+# ..licensed.yml
+
+# Definiert die Quellen, aus denen Abhängigkeiten erfasst werden sollen
+sources:
+  npm:
+    - path: ./ # Falls Ihr Projekt npm für JavaScript-Abhängigkeiten verwendet
+  rubygem:
+    - path: ./ # Falls Ihr Projekt RubyGems für Ruby-Abhängigkeiten verwendet
+  # Fügen Sie hier weitere Quellen hinzu, die für Ihr Projekt relevant sind
+
+# Legt die Lizenzen fest, die als mit GPLv3 kompatibel akzeptiert werden
+allowed_licenses:
+  - gpl-3.0
+  - gpl-2.0
+  - lgpl-3.0
+  - lgpl-2.1
+  - agpl-3.0
+  - mit
+  - apache-2.0
+  - bsd-3-clause
+  - bsd-2-clause
+  # Fügen Sie hier weitere Lizenzen hinzu, die Sie als kompatibel erachten
+
+# Optional: Definiert Pfade oder Dateien, die von der Überprüfung ausgeschlossen werden sollen
+ignored:
+  - path/to/ignored_directory
+  - path/to/ignored_file.js
