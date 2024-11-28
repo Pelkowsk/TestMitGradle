@@ -4,7 +4,7 @@ import fnmatch
 # Definieren der Ignore-Muster
 ignore_patterns = [
     'TestMitGradle/build/*',
-    'TestMitGradle/gradle/wrapper/*',
+    'TestMitGradle/gradle/*',
     'TestMitGradle/.idea/*',
     'TestMitGradle/*.iml',
     'TestMitGradle/.gitignore',
