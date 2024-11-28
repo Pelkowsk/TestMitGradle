@@ -17,7 +17,7 @@ IGNORE_PATTERNS = [
     re.compile(r'^TestMitGradle/LICENSE$'),
     re.compile(r'^TestMitGradle/Dockerfile$'),
     re.compile(r'^TestMitGradle/.github/.*'),
-    re.compile(r'^TestMitGradle'),
+    re.compile(r'^TestMitGradle/'),
 ]
 
 def load_json(file_path):
