@@ -1,7 +1,6 @@
 import os
 import re
 
-
 # Definieren der Ignore-Muster
 IGNORE_PATTERNS = [
     re.compile(r'^build/.*'),
@@ -23,20 +22,20 @@ def is_ignored(relative_path, ignore_patterns):
     return False
 
 def find_ignored_paths(base_path, ignore_patterns):
-    """Findet alle Pfade, die ignoriert werden sollen, und gibt ihre absoluten Pfade zurück."""
+    """Findet alle Pfade, die ignoriert werden sollen, und gibt ihre relativen Pfade zurück."""
     ignored_paths = []
     for root, dirs, files in os.walk(base_path):
+        # Berechnung des relativen Pfads zum Basisverzeichnis
+        relative_root = os.path.relpath(root, base_path)
         # Prüfen und Verzeichnisse filtern
         for directory in dirs:
-            dir_path = os.path.join(root, directory)
-            relative_dir_path = os.path.relpath(dir_path, base_path)
-            if is_ignored(relative_dir_path, ignore_patterns):
+            dir_path = os.path.join(relative_root, directory)
+            if is_ignored(dir_path, ignore_patterns):
                 ignored_paths.append(dir_path)
         # Prüfen und Dateien filtern
         for file in files:
-            file_path = os.path.join(root, file)
-            relative_file_path = os.path.relpath(file_path, base_path)
-            if is_ignored(relative_file_path, ignore_patterns):
+            file_path = os.path.join(relative_root, file)
+            if is_ignored(file_path, ignore_patterns):
                 ignored_paths.append(file_path)
     return ignored_paths
 
@@ -47,7 +46,7 @@ def save_to_file(file_path, data):
             f.write(f"{line}\n")
 
 def main():
-    base_path = os.path.abspath('TestMitGradle')  # Absoluter Pfad des Basisverzeichnisses
+    base_path = os.getcwd()  # Aktuelles Arbeitsverzeichnis
     ignored_paths = find_ignored_paths(base_path, IGNORE_PATTERNS)
 
     # Ignorierte Pfade speichern
