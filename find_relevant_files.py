@@ -4,7 +4,7 @@ import fnmatch
 # Definieren der Ignore-Muster
 ignore_patterns = [
     'TestMitGradle/build/*',
-    'TestMitGradle/gradle/*',
+    'TestMitGradle/gradle/wrapper/*',
     'TestMitGradle/.idea/*',
     'TestMitGradle/*.iml',
     'TestMitGradle/.gitignore',
@@ -15,7 +15,6 @@ ignore_patterns = [
     'TestMitGradle/gen/*',
     'TestMitGradle/gradle/*',
     'TestMitGradle/src/test/*',
-    'TestMitGradle'
 ]
 
 def is_ignored(path, ignore_patterns):
@@ -25,24 +24,36 @@ def is_ignored(path, ignore_patterns):
             return True
     return False
 
-def find_relevant_files(base_path, ignore_patterns):
-    """Findet relevante Endpunktdateien, die nicht ignoriert werden sollen."""
-    relevant_files = []
+def find_ignored_paths(base_path, ignore_patterns):
+    """Findet alle Pfade, die ignoriert werden sollen."""
+    ignored_paths = []
     for root, dirs, files in os.walk(base_path):
-        # Filtere Verzeichnisse, die ignoriert werden sollen
-        dirs[:] = [d for d in dirs if not is_ignored(os.path.join(root, d), ignore_patterns)]
+        # Prüfen und Verzeichnisse filtern
+        for directory in dirs:
+            dir_path = os.path.join(root, directory)
+            if is_ignored(dir_path, ignore_patterns):
+                ignored_paths.append(dir_path)
+        # Prüfen und Dateien filtern
         for file in files:
             file_path = os.path.join(root, file)
-            if not is_ignored(file_path, ignore_patterns):
-                relevant_files.append(file_path)
-    return relevant_files
+            if is_ignored(file_path, ignore_patterns):
+                ignored_paths.append(file_path)
+    return ignored_paths
 
-# Basisverzeichnis des Projekts
-base_path = 'TestMitGradle'
+def save_to_file(file_path, data):
+    """Schreibt die Liste der ignorierten Pfade in eine Datei."""
+    with open(file_path, 'w') as f:
+        for line in data:
+            f.write(f"{line}\n")
 
-# Finde relevante Dateien
-relevant_files = find_relevant_files(base_path, ignore_patterns)
+def main():
+    base_path = 'TestMitGradle'  # Wurzelverzeichnis
+    ignored_paths = find_ignored_paths(base_path, ignore_patterns)
 
-# Ausgabe der relevanten Dateien
-for file in relevant_files:
-    print(f"Relevante Datei zur Auswertung: {file}")
+    # Ignorierte Pfade speichern
+    save_to_file('ignore_paths.txt', ignored_paths)
+
+    print(f"Ignorierte Pfade wurden in 'ignore_paths.txt' gespeichert.")
+
+if __name__ == '__main__':
+    main()
