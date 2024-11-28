@@ -20,25 +20,17 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Find relevant paths
+        run: |
+          python find_relevant_files.py
+
       - name: Install ScanCode
         run: pip install scancode-toolkit
 
       - name: Run ScanCode
         run: |
-          scancode --license \
-            --ignore "TestMitGradle/build/*" \
-            --ignore "TestMitGradle/gradle/wrapper/*" \
-            --ignore "TestMitGradle/.idea/*" \
-            --ignore "TestMitGradle/*.iml" \
-            --ignore "TestMitGradle/.gitignore" \
-            --ignore "TestMitGradle/LICENSE" \
-            --ignore "TestMitGradle/Dockerfile" \
-            --ignore "TestMitGradle/.github/*" \
-            --ignore "TestMitGradle/compliance-scripts/*" \
-            --ignore "TestMitGradle/gen/*" \
-            --ignore "TestMitGradle/gradle/*" \
-            --ignore "TestMitGradle/src/test/*" \
-            --json-pp scancode-results.json .
+          ignore_args=$(awk '{print "--ignore \"" $0 "\""}' ignore_paths.txt | tr '\n' ' ')
+           scancode --license $ignore_args --json-pp scancode-results.json .
 
 
       - name: Check License Compliance
