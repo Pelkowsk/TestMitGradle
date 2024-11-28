@@ -32,6 +32,9 @@ jobs:
       - name: Install ScanCode
         run: pip install scancode-toolkit
 
+      - name: Aktuelles Arbeitsverzeichnis anzeigen
+        run: pwd
+
       - name: Find relevant paths
         run: python find_relevant_files.py
         working-directory: ${{ github.workspace }}
