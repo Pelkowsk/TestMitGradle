@@ -3,18 +3,18 @@ import fnmatch
 
 # Definieren der Ignore-Muster
 ignore_patterns = [
-    'TestMitGradle/build/*',
-    'TestMitGradle/gradle/wrapper/*',
-    'TestMitGradle/.idea/*',
-    'TestMitGradle/*.iml',
-    'TestMitGradle/.gitignore',
-    'TestMitGradle/LICENSE',
-    'TestMitGradle/Dockerfile',
-    'TestMitGradle/.github/*',
-    'TestMitGradle/compliance-scripts/*',
-    'TestMitGradle/gen/*',
-    'TestMitGradle/gradle/*',
-    'TestMitGradle/src/test/*',
+    'Pelkowsk/TestMitGradle/build/*',
+    'Pelkowski/TestMitGradle/gradle/wrapper/*',
+    'Pelkowsk/TestMitGradle/.idea/*',
+    'Pelkowsk/TestMitGradle/*.iml',
+    'Pelkowsk/TestMitGradle/.gitignore',
+    'Pelkowsk/TestMitGradle/LICENSE',
+    'Pelkowsk/TestMitGradle/Dockerfile',
+    'Pelkowsk/TestMitGradle/.github/*',
+    'Pelkowsk/TestMitGradle/compliance-scripts/*',
+    'PelkowskTestMitGradle/gen/*',
+    'Pelkowsk/TestMitGradle/gradle/*',
+    'Pelkowsk/TestMitGradle/src/test/*',
 ]
 
 def is_ignored(path, ignore_patterns):
