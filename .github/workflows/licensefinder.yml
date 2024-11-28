@@ -13,12 +13,10 @@ jobs:
         with:
           ruby-version: '3.1' # oder Ihre gewünschte Ruby-Version
 
-      - name: Install license_finder
+      - name: Install dependencies
         run: |
-          gem install license_finder --user-install
-          echo "GEM_HOME=$(ruby -e 'puts Gem.user_dir')" >> $GITHUB_ENV
-          echo "PATH=$GEM_HOME/bin:$PATH" >> $GITHUB_ENV
+          gem install bundler
+          bundle install
 
       - name: Run license_finder
-        run: license_finder
-
+        run: bundle exec license_finder
