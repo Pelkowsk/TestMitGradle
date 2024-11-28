@@ -26,14 +26,14 @@ jobs:
       - name: Run ScanCode
         run: |
           scancode --license \
-                   --exclude "build/*" \
-                   --exclude "gradle/wrapper/*" \
-                   --exclude ".idea/*" \
-                   --exclude "*.iml" \
-                   --exclude ".gitignore" \
-                   --exclude "LICENSE" \
-                   --exclude "Dockerfile" \
-                   --exclude ".github/*" \
+                   --ignore "build/*" \
+                   --ignore "gradle/wrapper/*" \
+                   --ignore ".idea/*" \
+                   --ignore "*.iml" \
+                   --ignore ".gitignore" \
+                   --ignore "LICENSE" \
+                   --ignore "Dockerfile" \
+                   --ignore ".github/*" \
                    --json-pp scancode-results.json .
 
       - name: Check License Compliance
