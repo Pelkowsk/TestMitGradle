@@ -18,7 +18,7 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'temurin'
 
       - name: Build with Gradle
@@ -39,6 +39,9 @@ jobs:
       #debug
       - name: Verzeichnisinhalt auflisten
         run: ls -la
+
+      - name: Enable Debug Logging
+        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
       - name: Find relevant paths
         run: python find_relevant_files.py
