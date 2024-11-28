@@ -1,0 +1,21 @@
+name: License Compliance Check
+
+on: [push, pull_request]
+
+jobs:
+  license-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1' # Passen Sie die Version entsprechend Ihrem Projekt an
+
+      - name: Run Licensed CI
+        uses: github/licensed-ci@v1.11.0
+        with:
+          mode: status
+          pr_comment: true
