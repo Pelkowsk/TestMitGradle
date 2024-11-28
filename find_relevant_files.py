@@ -55,5 +55,8 @@ def main():
 
     print(f"Ignorierte Pfade wurden in 'ignore_paths.txt' gespeichert.")
 
+    print(f"Aktuelles Arbeitsverzeichnis: {os.getcwd()}")
+# Weitere Debugging-Ausgaben hinzufügen, um den Ablauf des Skripts zu überprüfen
+
 if __name__ == '__main__':
     main()
