@@ -6,10 +6,17 @@ jobs:
   check-license:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Dependencies
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1' # oder Ihre gewünschte Ruby-Version
+
+      - name: Install license_finder
         run: |
-          gem install license_finder
-          # Fügen Sie hier weitere Installationsbefehle für Ihre Projektabhängigkeiten hinzu
-      - name: Run License Finder
+          gem install license_finder --user-install
+          echo 'export PATH="$HOME/.local/share/gem/ruby/3.1.0/bin:$PATH"' >> $GITHUB_ENV
+
+      - name: Run license_finder
         run: license_finder
