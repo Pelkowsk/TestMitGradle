@@ -1,14 +1,19 @@
 package org.example;
-
-/*********************************************************************
- * Copyright (c) {date} {owner} [and others]
+/*
+ * Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
  *
- * This program and the accompanying materials are made
- * available under the terms of the Eclipse Public License 2.0
- * which is available at https://www.eclipse.org/legal/epl-2.0/
+ * Sie dürfen:
+ * - Teilen — das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten
+ * - Bearbeiten — das Material remixen, verändern und darauf aufbauen
  *
- * SPDX-License-Identifier: EPL-2.0
- **********************************************************************/
+ * Unter den folgenden Bedingungen:
+ * - Namensnennung — Sie müssen angemessene Urheber- und Rechteangaben machen, einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden.
+ * - Nicht kommerziell — Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
+ *
+ * Vollständiger Lizenztext: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ */
 
-public class Licensetest {
-}
+
+public class Licensetest{ public static void main(String[]args)
+{System.out.println( "upsi da ist was nicht in Ordnung" );
+}}

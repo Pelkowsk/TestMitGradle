@@ -1,32 +1,16 @@
-/*****************************************************************************
- * SysML 2 Pilot Implementation
- * Copyright (c) 2018-2024 Model Driven Solutions, Inc.
- * Copyright (c) 2018 IncQuery Labs Ltd.
- * Copyright (c) 2019 Maplesoft (Waterloo Maple, Inc.)
- * Copyright (c) 2019 Mgnite Inc.
+/*
+ * Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Sie dürfen:
+ * - Teilen — das Material in jedwedem Format oder Medium vervielfältigen und weiterverbreiten
+ * - Bearbeiten — das Material remixen, verändern und darauf aufbauen
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
+ * Unter den folgenden Bedingungen:
+ * - Namensnennung — Sie müssen angemessene Urheber- und Rechteangaben machen, einen Link zur Lizenz beifügen und angeben, ob Änderungen vorgenommen wurden.
+ * - Nicht kommerziell — Sie dürfen das Material nicht für kommerzielle Zwecke nutzen.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
- * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
- *
- * Contributors:
- *  Ed Seidewitz, MDS
- *  Zoltan Kiss, IncQuery
- *  Balazs Grill, IncQuery
- *  Hisashi Miyashita, Maplesoft/Mgnite
- *
- *****************************************************************************/
+ * Vollständiger Lizenztext: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ */
 
 grammar test;
 
