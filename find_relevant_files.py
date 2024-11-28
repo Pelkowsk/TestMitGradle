@@ -2,20 +2,18 @@ import os
 import fnmatch
 
 # Definieren der Ignore-Muster
-ignore_patterns = [
-    'Pelkowsk/TestMitGradle/build/*',
-    'Pelkowski/TestMitGradle/gradle/wrapper/*',
-    'Pelkowsk/TestMitGradle/.idea/*',
-    'Pelkowsk/TestMitGradle/*.iml',
-    'Pelkowsk/TestMitGradle/.gitignore',
-    'Pelkowsk/TestMitGradle/LICENSE',
-    'Pelkowsk/TestMitGradle/Dockerfile',
-    'Pelkowsk/TestMitGradle/.github/*',
-    'Pelkowsk/TestMitGradle/compliance-scripts/*',
-    'PelkowskTestMitGradle/gen/*',
-    'Pelkowsk/TestMitGradle/gradle/*',
-    'Pelkowsk/TestMitGradle/src/test/*',
+IGNORE_PATTERNS = [
+    re.compile(r'^build/.*'),
+    re.compile(r'^gradle/wrapper/.*'),
+    re.compile(r'^\.idea/.*'),
+    re.compile(r'^[^/]+\.iml$'),
+    re.compile(r'^\.gitignore$'),
+    re.compile(r'^LICENSE$'),
+    re.compile(r'^Dockerfile$'),
+    re.compile(r'^\.github/.*'),
+    # Weitere spezifische Muster können hier hinzugefügt werden
 ]
+
 
 def is_ignored(path, ignore_patterns):
     """Überprüft, ob ein Pfad einem der Ignore-Muster entspricht."""
