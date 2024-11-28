@@ -21,3 +21,4 @@ jobs:
 
       - name: Run license_finder
         run: license_finder
+
