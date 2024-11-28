@@ -16,7 +16,8 @@ jobs:
       - name: Install license_finder
         run: |
           gem install license_finder --user-install
-          echo 'export PATH="$HOME/.local/share/gem/ruby/3.1.0/bin:$PATH"' >> $GITHUB_ENV
+          echo "GEM_HOME=$(ruby -e 'puts Gem.user_dir')" >> $GITHUB_ENV
+          echo "PATH=$GEM_HOME/bin:$PATH" >> $GITHUB_ENV
 
       - name: Run license_finder
         run: license_finder
