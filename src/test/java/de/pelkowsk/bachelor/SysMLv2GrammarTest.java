@@ -2,8 +2,8 @@ package de.pelkowsk.bachelor;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-import org.example.SysMLv2beispielLexer;
-import org.example.SysMLv2beispielParser; // Import der generierten Klassen
+import org.example.sysmlv2beispielLexer;
+import org.example.sysmlv2beispielParser; // Import der generierten Klassen
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,9 +12,9 @@ public class SysMLv2GrammarTest {
     @Test
     public void testValidExpression() {
         String input = "3 + 5 - 2";
-        SysMLv2beispielLexer lexer = new SysMLv2beispielLexer(CharStreams.fromString(input));
+        sysmlv2beispielLexer lexer = new sysmlv2beispielLexer(CharStreams.fromString(input));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SysMLv2beispielParser parser = new SysMLv2beispielParser(tokens);
+        sysmlv2beispielParser parser = new sysmlv2beispielParser(tokens);
 
         ParseTree tree = parser.start();
 
@@ -31,9 +31,9 @@ public class SysMLv2GrammarTest {
     @Test
     public void testInvalidExpression() {
         String input = "3 + * 5";
-        SysMLv2beispielLexer lexer = new SysMLv2beispielLexer(CharStreams.fromString(input));
+        sysmlv2beispielLexer lexer = new sysmlv2beispielLexer(CharStreams.fromString(input));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SysMLv2beispielParser parser = new SysMLv2beispielParser(tokens);
+        sysmlv2beispielParser parser = new sysmlv2beispielParser(tokens);
 
         parser.start();
 
