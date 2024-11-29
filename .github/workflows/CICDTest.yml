@@ -29,7 +29,7 @@ jobs:
 
       - name: Generate Lexer and Parser
         run: |
-          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/test.g4
+          java -jar antlr-4.13.0-complete.jar -Dlanguage=Java -visitor -listener -package com.example.grammar src/main/java/org/example/sysmlv2beispiel.g4
         working-directory: .
 
       - name: Build Application (Gradle)
